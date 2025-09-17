@@ -5,7 +5,7 @@ SELECT cust_id, cust_name FROM customer;
 SELECT * FROM rep;
 
 -- SELECT * FROM customer LIMIT 5;
--- Found out "Execute Query" works on comments like this, yet "Execute Script" doesn't.
+-- Found out "Execute Query" works on comments like this, and "Execute Script" doesn't, more convenient.
 
 -- 3.	Display the names of all customers whose credit limits are $10,000 or more.
 SELECT cust_name FROM customer
@@ -18,12 +18,27 @@ WHERE cust_id = '1619' AND invoice_date = '13-SEP-07';
 
 
 -- 5.	Display the id and the name for all customers whose sales representative has an id of either 237 or 268.
+-- SELECT * FROM customer LIMIT 5;
+SELECT cust_id, cust_name FROM customer
+WHERE rep_id = '237' OR rep_id = '268';
 
 -- 6.	Display the id and description for all products whose type is not AP.
-
+-- SELECT * FROM product LIMIT 5;
+SELECT prod_id, prod_desc FROM product
+WHERE prod_type != 'AP';
 -- 7.	Display the id, the description, and the number of items for each product that has between 12 and 30 items. Perform this query two different ways.
+-- SELECT * FROM product LIMIT 5;
+
+-- Exclusive
+SELECT prod_id, prod_desc, prod_quantity FROM product
+WHERE prod_quantity > 12 AND prod_quantity < 30;
+-- Inclusive
+SELECT prod_id, prod_desc, prod_quantity FROM product
+WHERE prod_quantity >= 12 AND prod_quantity <= 30;
 
 -- 8.	Display the id, the description, and the total value (product quantity * product price) of each product whose product type is HW.  Assign the column name TOTAL_VALUE to this calculation.
+-- SELECT * FROM product;
+SELECT prod_id, prod_desc, prod_quantity * prod_price FROM product
 
 -- 9.	Display the id, the description, and the total value (product quantity * product price) of each product whose total value is greater than or equal to $4,000.  Assign the column name TOTAL_VALUE to the calculation.
 
